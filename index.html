@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Themysciran Chronicles • Wonder Woman Collector Catalog</title>
+<style>
+:root {
+    --bg-main: #0a0f1d;
+    --bg-card: #121b2f;
+    --bg-accent: #0e1626;
+    --border-color: #22324e;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-glow: #fde047;
+    --accent-gold: #f59e0b;
+    --accent-red: #e11d48;
+    --accent-blue: #2563eb;
+    --accent-warning: #fbbf24;
+    --badge-gold: #d97706;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+}
+
+@page {
+    size: A4;
+    margin: 16mm 12mm;
+    background-color: var(--bg-main);
+    @top-left {
+        content: "THE THEMYSCIRAN CHRONICLES • DC COMICS CATALOG";
+        font-size: 7pt;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        color: var(--accent-gold);
+        text-transform: uppercase;
+    }
+    @top-right {
+        content: "WONDER WOMAN ARCHIVAL COLLECTION";
+        font-size: 7pt;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+    }
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-size: 7pt;
+        font-weight: bold;
+        color: var(--accent-gold);
+    }
+}
+@page:first {
+    margin: 0;
+    @top-left { content: none; }
+    @top-right { content: none; }
+    @bottom-right { content: none; }
+}
+
+.cover-wrapper {
+    width: 210mm;
+    height: 297mm;
+    padding: 24mm 20mm;
+    background: #060913;
+    position: relative;
+    border: 1px solid #060913;
+}
+.cover-border {
+    border: 2px solid var(--accent-gold);
+    height: 100%;
+    padding: 16mm 14mm;
+    position: relative;
+    background: radial-gradient(circle at 50% 10%, #17233d 0%, var(--bg-accent) 70%);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.6);
+}
+.cover-header-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid var(--accent-gold);
+    color: var(--text-glow);
+    font-size: 8.5pt;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-bottom: 18px;
+}
+.cover-title {
+    font-size: 28pt;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: 1.5px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+.cover-title span { 
+    color: var(--accent-gold);
+    text-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+}
+.cover-subtitle {
+    font-size: 11pt;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin: 0 0 22px 0;
+    font-weight: 300;
+}
+.cover-divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-gold) 50%, var(--accent-blue) 100%);
+    margin: 18px 0 24px 0;
+    border-radius: 2px;
+}
+
+.stats-table {
+    width: 100%;
+    margin-bottom: 24px;
+    border-collapse: separate;
+    border-spacing: 8px 0;
+}
+.stats-cell {
+    width: 25%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--accent-gold);
+    padding: 10px 8px;
+    text-align: center;
+    border-radius: 4px;
+}
+.stats-num { 
+    font-size: 16pt; 
+    font-weight: bold; 
+    color: var(--text-glow); 
+    margin-bottom: 2px; 
+}
+.stats-label { 
+    font-size: 7pt; 
+    font-weight: bold; 
+    color: var(--text-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+
+.curatorial-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-red);
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin-bottom: 22px;
+}
+.curatorial-box h3 { 
+    margin: 0 0 8px 0; 
+    font-size: 10pt; 
+    color: var(--text-glow); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+.curatorial-box p { 
+    margin: 0; 
+    font-size: 8.5pt; 
+    line-height: 1.45; 
+    color: #cbd5e1; 
+}
+
+.section-header {
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    margin-top: 24px;
+}
+.section-header h2 {
+    margin: 0; 
+    font-size: 14pt; 
+    color: #ffffff; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px;
+}
+.section-header h2 span { color: var(--accent-gold); }
+
+.index-table {
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 7.2pt; 
+    margin-top: 8px;
+}
+.index-table th {
+    background: linear-gradient(90deg, #991b1b 0%, #b45309 100%);
+    color: #ffffff; 
+    font-weight: bold; 
+    text-align: left; 
+    padding: 6px 8px; 
+    text-transform: uppercase; 
+    border: 1px solid var(--border-color);
+}
+.index-table td { 
+    padding: 5px 8px; 
+    border-bottom: 1px solid var(--border-color); 
+    color: #cbd5e1; 
+}
+.index-table tr:nth-child(even) td { background: #0c1322; }
+.index-table tr:nth-child(odd) td { background: var(--bg-card); }
+
+.item-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+.item-photo-col {
+    width: 35%;
+    text-align: center;
+    padding-right: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.photo-frame {
+    background: #050811;
+    border: 1px solid var(--accent-gold);
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
+}
+.photo-frame img {
+    width: 100%;
+    height: auto;
+    max-height: 96mm;
+    object-fit: contain;
+    border-radius: 2px;
+    display: block;
+}
+.item-info-col {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+.lot-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+}
+.lot-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #e11d48, #be123c);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 7.8pt;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+}
+.lot-title-text { 
+    font-size: 10.5pt; 
+    font-weight: bold; 
+    color: #ffffff; 
+    vertical-align: middle; 
+    line-height: 1.2; 
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: 28% 72%;
+    row-gap: 5px;
+    font-size: 7.6pt;
+    margin-bottom: 8px;
+}
+.spec-label { 
+    color: var(--text-muted); 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    font-size: 7pt; 
+    letter-spacing: 0.4px; 
+}
+.spec-val { color: #f1f5f9; }
+.spec-val-highlight { 
+    color: var(--accent-warning); 
+    font-weight: bold; 
+}
+.spec-val-glow { 
+    color: var(--text-glow); 
+    font-weight: bold; 
+}
+
+.desc-block {
+    background: var(--bg-accent);
+    border-left: 2px solid var(--accent-gold);
+    padding: 7px 10px;
+    border-radius: 0 4px 4px 0;
+    margin-top: auto;
+}
+.desc-heading { 
+    font-size: 7pt; 
+    font-weight: bold; 
+    color: var(--accent-gold); 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    margin-bottom: 3px; 
+}
+.desc-text { 
+    font-size: 7.4pt; 
+    line-height: 1.35; 
+    color: #cbd5e1; 
+    margin: 0; 
+}
+
+@media screen {
+    body { padding: 20px; }
+    .cover-wrapper { width: 100%; height: auto; max-width: 850px; margin: 0 auto 30px auto; }
+    .item-card { max-width: 850px; margin: 0 auto 20px auto; flex-direction: column; }
+    .item-photo-col, .item-info-col { width: 100%; padding: 0; }
+    .item-photo-col { margin-bottom: 15px; }
+    .photo-frame img { max-height: 480px; }
+    .index-table-container { max-width: 850px; margin: 0 auto 30px auto; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="cover-wrapper">
+    <div class="cover-border">
+        <div class="cover-header-badge">DC Comics • Curatorial Archival Series</div>
+        <h1 class="cover-title">THE THEMYSCIRAN<br><span>CHRONICLES</span></h1>
+        <p class="cover-subtitle">
+            A Collector Provenance, Identification & Market Valuation Catalog of Landmark Bronze Age & Modern Age Wonder Woman Comic Books
+        </p>
+        <div class="cover-divider"></div>
+        
+        <table class="stats-table">
+            <tr>
+                <td class="stats-cell">
+                    <div class="stats-num">7</div>
+                    <div class="stats-label">Curated Lots</div>
+                </td>
+                <td class="stats-cell">
+                    <div class="stats-num">1982–2007</div>
+                    <div class="stats-label">Era Span</div>
+                </td>
+                <td class="stats-cell">
+                    <div class="stats-num">Vol. 1–3</div>
+                    <div class="stats-label">Continuity Runs</div>
+                </td>
+                <td class="stats-cell">
+                    <div class="stats-num">$280+</div>
+                    <div class="stats-label">Collection Est.</div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="curatorial-box">
+            <h3>Archival Scope & Historical Significance</h3>
+            <p>
+                This catalog documents seven essential comic books illuminating key evolution points across Princess Diana’s publication history. From late Bronze Age masterworks by Dan Mishkin, Rich Buckler, and Gene Colan (featuring beloved Huntress co-features) to Greg Rucka's celebrated mythological diplomatic run with iconic J.G. Jones painted covers, and concluding with Allan Heinberg and Terry & Rachel Dodson’s post-Infinite Crisis relaunch featuring Donna Troy and Diana battling Cheetah and Circe.
+            </p>
+        </div>
+
+        <div style="background: #080d19; border: 1px solid var(--border-color); padding: 12px 14px; border-radius: 4px; position: absolute; bottom: 16mm; left: 14mm; right: 14mm;">
+            <table style="width: 100%; font-size: 7.5pt; color: #94a3b8;">
+                <tr>
+                    <td style="width: 50%; padding-bottom: 4px;"><strong style="color: var(--accent-gold);">CATALOG NUMBER:</strong> WW-AMZ-2026-07</td>
+                    <td style="width: 50%; padding-bottom: 4px;"><strong style="color: var(--accent-gold);">CLASSIFICATION:</strong> DC Key Superhero Issues</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;"><strong style="color: var(--accent-gold);">ICONOGRAPHY:</strong> Lasso of Truth & Bracelets of Submission</td>
+                    <td style="width: 50%;"><strong style="color: var(--accent-gold);">TARGET CONDITION:</strong> NM (9.4) – MT (9.8)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="index-table-container">
+    <div class="section-header">
+        <h2>Collection <span>Master Index</span></h2>
+    </div>
+    <table class="index-table">
+        <thead>
+            <tr>
+                <th style="width: 9%;">Lot</th>
+                <th style="width: 33%;">Title & Issue</th>
+                <th style="width: 25%;">Creative Team</th>
+                <th style="width: 15%;">Publication Date</th>
+                <th style="width: 18%;">Est. Value (NM)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 01</td>
+                <td><strong>Wonder Woman (Vol. 1) #295</strong> — "Mind Over Murder!"</td>
+                <td>D. Mishkin, G. Colan, R. Buckler, D. Giordano</td>
+                <td>September 1982</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$25 – $45</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 02</td>
+                <td><strong>Wonder Woman (Vol. 1) #303</strong> — "Huntress Shocker!"</td>
+                <td>D. Mishkin, G. Colan, D. Giordano</td>
+                <td>May 1983</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$25 – $50</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 03</td>
+                <td><strong>Wonder Woman (Vol. 2) #204</strong> — "Bitter Pills" Part 1</td>
+                <td>G. Rucka, D. Johnson, R. Snyder, J.G. Jones</td>
+                <td>July 2004</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$25 – $40</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 04</td>
+                <td><strong>Wonder Woman (Vol. 2) #205</strong> — "Who's Laughing Now?"</td>
+                <td>G. Rucka, D. Johnson, R. Snyder, J.G. Jones</td>
+                <td>August 2004</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$70 – $130</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 05</td>
+                <td><strong>Wonder Woman (Vol. 3) #2</strong> — "Who Is Wonder Woman?" Pt. 2</td>
+                <td>A. Heinberg, Terry Dodson, Rachel Dodson</td>
+                <td>September 2006</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$15 – $25</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 06</td>
+                <td><strong>Wonder Woman (Vol. 3) #3</strong> — "Who Is Wonder Woman?" Pt. 3</td>
+                <td>A. Heinberg, Terry Dodson, Rachel Dodson</td>
+                <td>October 2006</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$18 – $30</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-glow); font-weight: bold;">Lot 07</td>
+                <td><strong>Wonder Woman (Vol. 3) #4</strong> — "Who Is Wonder Woman?" Pt. 4</td>
+                <td>A. Heinberg, Terry Dodson, Rachel Dodson</td>
+                <td>February 2007</td>
+                <td style="color: var(--accent-warning); font-weight: bold;">$18 – $30</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009635.png" alt="Wonder Woman #295">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(225, 29, 72, 0.18); border: 1px solid var(--accent-red); color: #fca5a5; font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Bronze Age Key • Huntress Co-Feature</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 01</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 1) #295 — "Mind Over Murder!"</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Bronze Age (Cover Date: September 1982)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Dan Mishkin & Gary Cohn (W) • Gene Colan (A) • Rich Buckler & Dick Giordano (Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">36-Page Newsstand/Direct Standard Comic • Original 60¢ Cover</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Wonder Woman, Doctor Psycho, Steve Trevor, The Huntress (Helena Wayne)</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Doctor Psycho Mind Sphere & Aerial Invisible Jet Dogfight</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$25 – $45 (Raw NM 9.4) • $90+ (CGC 9.6+)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">Dynamic late Bronze Age cover composition by Rich Buckler and Dick Giordano depicting Diana falling toward the Capitol dome through the psionic projection sphere of Doctor Psycho. Includes the backup feature "Shadow of the Hawk" starring Helena Wayne (The Huntress of Earth-Two) with art by Joe Staton.</p>
+        </div>
+    </div>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009636.png" alt="Wonder Woman #303">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(245, 158, 11, 0.18); border: 1px solid var(--accent-gold); color: var(--text-glow); font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Classic Gene Colan Cover</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 02</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 1) #303 — "Huntress Shocker!"</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Bronze Age (Cover Date: May 1983)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Dan Mishkin (W) • Gene Colan (Pencils) • Frank McLaughlin & Dick Giordano (Inks)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">36-Page Standard Comic • Original 60¢ Cover</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Wonder Woman, Doctor Cyber, The Huntress (Helena Wayne)</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Dual-Scale Amazon Bust with Deflecting Bracelets Action</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$25 – $50 (Raw NM 9.4) • $95+ (CGC 9.6+)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">Showcases an iconic dual-perspective cover illustration by legendary artist Gene Colan. A monumental line-drawn bust of Diana holding her golden lasso frames an acrobatic full-color Wonder Woman deflecting concentrated gunfire with her silver Bracelets of Submission against a bold Canary yellow background.</p>
+        </div>
+    </div>
+</div>
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009637.png" alt="Wonder Woman #204">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(37, 99, 235, 0.2); border: 1px solid var(--accent-blue); color: #93c5fd; font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">J.G. Jones Painted Art • Batman Guest Star</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 03</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 2) #204 — "Bitter Pills" Part 1</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Modern Age (Cover Date: July 2004)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Greg Rucka (W) • Drew Johnson (Pencils) • Ray Snyder (Inks) • J.G. Jones (Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">Direct Edition Standard Comic • $2.25 US / $3.50 CAN</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Wonder Woman, Batman (Bruce Wayne), Ferdinand, Veronica Cale</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Hyper-Realistic Painted Diana Wielding Coiled Golden Lasso</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$25 – $40 (Raw NM) • $85+ (CGC 9.8)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">The inaugural chapter of Greg Rucka's acclaimed "Bitter Pills" crossover storyline. Features a masterwork photorealistic painted cover by J.G. Jones capturing Diana outside the Themysciran embassy holding her shimmering golden lasso, accented by the classic guest-starring Bat-signal emblem.</p>
+        </div>
+    </div>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009640.png" alt="Wonder Woman #205">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(225, 29, 72, 0.25); border: 1px solid var(--accent-red); color: #fca5a5; font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Major Modern Key • Joker In Tiara Cover</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 04</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 2) #205 — "Who's Laughing Now?"</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Modern Age (Cover Date: August 2004)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Greg Rucka (W) • Drew Johnson (Pencils) • Ray Snyder (Inks) • J.G. Jones (Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">Direct Edition Standard Comic • $2.25 US / $3.50 CAN</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">The Joker, Wonder Woman, Batman (Bruce Wayne)</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Joker Donning Amazon Star Tiara & Deflecting Ricochet Bullets</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$70 – $130 (Raw NM) • $240 – $350+ (CGC 9.8)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">One of the most iconic and highly sought-after Modern Age DC covers in existence. J.G. Jones's famous painted depiction features The Joker usurping Wonder Woman's tiara and Amazonian bracelets to deflect gunfire against a backdrop of manic laughter, completing the "Bitter Pills" storyline.</p>
+        </div>
+    </div>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009641.png" alt="Wonder Woman #2">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(245, 158, 11, 0.18); border: 1px solid var(--accent-gold); color: var(--text-glow); font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Post-Infinite Crisis • Dodson Art</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 05</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 3) #2 — "Who Is Wonder Woman?" Part 2</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Modern Age / One Year Later (Cover Date: September 2006)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Allan Heinberg (W) • Terry Dodson (Pencils/Cover) • Rachel Dodson (Inks/Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">Direct Edition Standard Comic • $2.99 US / $4.00 CAN</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Donna Troy (as Wonder Woman), Cassie Sandsmark (Wonder Girl), Hercules</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Overhead Press of Armored Behemoth with Shattered Ground</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$15 – $25 (Raw NM) • $55 – $80 (CGC 9.8)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">Part two of Allan Heinberg's celebrated relaunch following <em>Infinite Crisis</em>. Illustrated by fan-favorite art duo Terry and Rachel Dodson, this cover showcases Donna Troy carrying the mantle of Wonder Woman, effortlessly lifting an armored enemy over her head amid exploding rubble.</p>
+        </div>
+    </div>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009638.png" alt="Wonder Woman #3">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(225, 29, 72, 0.18); border: 1px solid var(--accent-red); color: #fca5a5; font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Cheetah Showdown • Glowing Lasso</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 06</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 3) #3 — "Who Is Wonder Woman?" Part 3</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Modern Age (Cover Date: October 2006)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Allan Heinberg (W) • Terry Dodson (Pencils/Cover) • Rachel Dodson (Inks/Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">Direct Edition Standard Comic • $2.99 US / $4.00 CAN</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Wonder Woman (Diana), The Cheetah (Barbara Ann Minerva), Donna Troy</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Sunset Battle with Swirling Golden Lasso of Truth vs. Cheetah</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$18 – $30 (Raw NM) • $60 – $90 (CGC 9.8)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">Dynamic action cover featuring Princess Diana spinning her glowing Lasso of Truth in combat against her premier feline adversary, The Cheetah, flanked by prowling black panthers against an evocative dusk-red skyline.</p>
+        </div>
+    </div>
+</div>
+
+<div class="item-card">
+    <div class="item-photo-col">
+        <div class="photo-frame">
+            <img src="1000009639.png" alt="Wonder Woman #4">
+        </div>
+        <div style="margin-top: 8px; padding: 4px 8px; background: rgba(147, 51, 234, 0.22); border: 1px solid #c084fc; color: #e9d5ff; font-size: 7pt; font-weight: bold; border-radius: 4px; text-transform: uppercase;">Circe Spellbinding Key Issue</div>
+    </div>
+    <div class="item-info-col">
+        <div class="lot-header">
+            <span class="lot-tag">LOT 07</span>
+            <span class="lot-title-text">Wonder Woman (Vol. 3) #4 — "Who Is Wonder Woman?" Part 4</span>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-label">Publisher / Era:</div>
+            <div class="spec-val">DC Comics • Modern Age (Cover Date: February 2007)</div>
+            <div class="spec-label">Creative Team:</div>
+            <div class="spec-val">Allan Heinberg (W) • Terry Dodson (Pencils/Cover) • Rachel Dodson (Inks/Cover)</div>
+            <div class="spec-label">Format / Price:</div>
+            <div class="spec-val">Direct Edition Standard Comic • $2.99 US / $4.00 CAN</div>
+            <div class="spec-label">Key Characters:</div>
+            <div class="spec-val">Wonder Woman, Circe, Giganta, Doctor Psycho, Twin Mythological Serpents</div>
+            <div class="spec-label">Key Cover Motif:</div>
+            <div class="spec-val spec-val-glow">Serpent-Bound Diana Under Circe’s Mystical Dominion</div>
+            <div class="spec-label">Est. Valuation:</div>
+            <div class="spec-val spec-val-highlight">$18 – $30 (Raw NM) • $60 – $85 (CGC 9.8)</div>
+        </div>
+        <div class="desc-block">
+            <div class="desc-heading">Curatorial & Physical Analysis</div>
+            <p class="desc-text">A visually arresting mythological tableau by Terry and Rachel Dodson depicting Wonder Woman ensnared by giant serpents and a snarling chimera crocodile, while the sorceress Circe commands enchanted golden bonds amidst shattered Hellenic columns.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
